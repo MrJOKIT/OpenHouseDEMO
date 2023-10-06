@@ -23,12 +23,14 @@ public class BossHunter : MonoBehaviour
     private Rigidbody2D rb;
     private Rigidbody2D playerRb;
     private SpriteRenderer spriteRenderer;
+    private GameController _gameController;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         playerRb = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        _gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
     }
 
     private void Update()
@@ -109,6 +111,8 @@ public class BossHunter : MonoBehaviour
         }
     }
 
+    
+
     private void OnDrawGizmos()
     {
         Debug.DrawRay(transform.position,Vector3.down * groundCheckDistance,Color.red);
@@ -122,8 +126,10 @@ public class BossHunter : MonoBehaviour
     {
         if (col.collider.CompareTag("Player"))
         {
-            //method to Game Over
+            _gameController.GameOver();
             Debug.Log("Game Over");
         }
     }
+    
+    
 }

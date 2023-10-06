@@ -18,7 +18,7 @@ public class Damage : MonoBehaviour
     {
         if (col.CompareTag("Player"))
         {
-            col.GetComponent<PlayerController>().PlayerHit();
+            col.GetComponent<PlayerController>().PlayerHit(transform,0.15f);
             ProCamera2DShake.Instance.Shake(0);
             Instantiate(vfx, transform.position, Quaternion.identity);
             Destroy(gameObject);
