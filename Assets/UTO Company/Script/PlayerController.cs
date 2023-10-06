@@ -19,9 +19,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool onGround;
     [SerializeField] private float groundHeight;
     [SerializeField] private LayerMask groundLayer;
-    
+
 
     [Header("Run Setting")] 
+    [SerializeField] private Transform walkVfxReverse;
+    [SerializeField] private Transform walkVfx;
     [SerializeField] private Transform vfxTrans;
     [SerializeField] private Transform vfxTransReverse;
     [SerializeField] private Transform runVfx;
@@ -44,6 +46,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int maxCollectGem;
     public int currentGem;
     private bool onPower;
+
+    [Header("Point Taker Setting")] 
+    [SerializeField] private float takerRadius;
+    [SerializeField] private LayerMask pointLayer;
+    
     
     [Header("Ref")] 
     private Animator animator;
@@ -62,6 +69,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        PointTaker();
         PlayerJump();
         CheckRunPosition();
         UltimatePowerCheck();
@@ -97,6 +105,8 @@ public class PlayerController : MonoBehaviour
         
         if (playerInput.actions["Jump"].triggered && onGround)
         {
+            SmokeEffect();
+            animator.SetTrigger("Jump");
             rb.gravityScale *= -1;
         }
 
@@ -186,13 +196,39 @@ public class PlayerController : MonoBehaviour
             }
         }
         
-        
+    }
+
+    private void PointTaker()
+    {
+        Collider2D[] point = Physics2D.OverlapCircleAll(transform.position, takerRadius, pointLayer);
+
+        foreach (Collider2D mail in point)
+        {
+            mail.GetComponent<MailPoint>().onTake = true;
+        }
     }
 
     private void OnDrawGizmos()
     {
         Debug.DrawRay(transform.position,Vector3.up * groundHeight);
         Debug.DrawRay(transform.position,Vector3.down * groundHeight);
+        
+        Gizmos.DrawWireSphere(transform.position,takerRadius);
     }
-    
+
+    public void SmokeEffect()
+    {
+        
+        
+        if (rb.gravityScale < 0)
+        {
+            Transform vfx = Instantiate(walkVfxReverse, vfxTransReverse.position, Quaternion.identity);
+            Destroy(vfx.gameObject,0.2f);
+        }
+        else if (rb.gravityScale > 0)
+        {
+            Transform vfx = Instantiate(walkVfx, vfxTrans.position, Quaternion.identity);
+            Destroy(vfx.gameObject,0.2f);
+        }
+    }
 }

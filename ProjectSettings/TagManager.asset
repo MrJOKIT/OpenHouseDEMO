@@ -10,6 +10,7 @@ TagManager:
   - Obstacle
   - Damage
   - BackChecker
+  - MailInventory
   layers:
   - Default
   - TransparentFX
@@ -22,7 +23,7 @@ TagManager:
   - Parallax1
   - Parallax2
   - Parallax3
-  - 
+  - Point
   - 
   - 
   - 
