@@ -21,6 +21,34 @@ public class ScoreResult : MonoBehaviour
     private void Update()
     {
         CalculateResult();
+        switch (resultScore)
+        {
+            
+            case > 5000:
+                iconResult[0].SetActive(false);
+                iconResult[1].SetActive(false);
+                iconResult[2].SetActive(false);
+                iconResult[3].SetActive(true);
+                break;
+            case > 2500:
+                iconResult[0].SetActive(false);
+                iconResult[1].SetActive(false);
+                iconResult[2].SetActive(true);
+                iconResult[3].SetActive(false);
+                break;
+            case > 1000:
+                iconResult[0].SetActive(false);
+                iconResult[1].SetActive(true);
+                iconResult[2].SetActive(false);
+                iconResult[3].SetActive(false);
+                break;
+            default:
+                iconResult[0].SetActive(true);
+                iconResult[1].SetActive(false);
+                iconResult[2].SetActive(false);
+                iconResult[3].SetActive(false);
+                break;
+        }
     }
 
     private void CalculateResult()
@@ -31,34 +59,7 @@ public class ScoreResult : MonoBehaviour
         }
         else
         {
-            switch (_gameController.playerScore)
-            {
             
-                case > 5000:
-                    iconResult[0].SetActive(false);
-                    iconResult[1].SetActive(false);
-                    iconResult[2].SetActive(false);
-                    iconResult[3].SetActive(true);
-                    break;
-                case > 2500:
-                    iconResult[0].SetActive(false);
-                    iconResult[1].SetActive(false);
-                    iconResult[2].SetActive(true);
-                    iconResult[3].SetActive(false);
-                    break;
-                case > 1000:
-                    iconResult[0].SetActive(false);
-                    iconResult[1].SetActive(true);
-                    iconResult[2].SetActive(false);
-                    iconResult[3].SetActive(false);
-                    break;
-                default:
-                    iconResult[0].SetActive(true);
-                    iconResult[1].SetActive(false);
-                    iconResult[2].SetActive(false);
-                    iconResult[3].SetActive(false);
-                    break;
-            }
             
         }
 
