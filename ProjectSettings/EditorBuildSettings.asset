@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/UTO Company/Scene/PlayStage.unity
     guid: 421ae40a9a95ed549a8e84ae6d37fdb9
+  - enabled: 1
+    path: Assets/UTO Company/Scene/Credit.unity
+    guid: b7285d2e35901574db4ffb30f0f126fe
   m_configObjects: {}

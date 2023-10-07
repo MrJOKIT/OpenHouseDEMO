@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class StageSlide : MonoBehaviour
 {
+    public AudioSource bgm;
     [SerializeField] private GameObject startPanel;
     [SerializeField] private float slideSpeed;
     [SerializeField] private float startTime;
@@ -45,12 +46,12 @@ public class StageSlide : MonoBehaviour
             timeText.SetText("<shake>"+ 3);
             three = false;
         }
-        else if (startTimeCounter < 2)
+        else if (startTimeCounter < 2 && two)
         {
             timeText.SetText("<shake>"+ 2);
             two = false;
         }
-        else if (startTimeCounter < 3)
+        else if (startTimeCounter < 3 && one)
         {
             timeText.SetText("<shake>"+ 1);
             one = false;
@@ -58,6 +59,7 @@ public class StageSlide : MonoBehaviour
         else if (startTimeCounter < startTime && !start)
         {
             timeText.SetText("START");
+            
         }
     }
     

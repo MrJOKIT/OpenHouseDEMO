@@ -11,7 +11,10 @@ GameObject:
   - component: {fileID: 6046024352920463640}
   - component: {fileID: 2007400033326759895}
   - component: {fileID: 4170044602564292850}
-  m_Layer: 0
+  - component: {fileID: 9010787108648433790}
+  - component: {fileID: 1242590395534384037}
+  - component: {fileID: 6223082624449249121}
+  m_Layer: 11
   m_Name: note_silver_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,3 +109,59 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &9010787108648433790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5692222596091880270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcc10bad4d9779a41ad5a3a6d96b93f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClip:
+  - {fileID: 8300000, guid: 4ea44ec1f3055e743ba523d35bee7b41, type: 3}
+  - {fileID: 8300000, guid: 5cd9d30594074c346817edab456baeba, type: 3}
+  - {fileID: 8300000, guid: 861c5dd673e7d49479032fd85b5a888f, type: 3}
+  - {fileID: 8300000, guid: 133c5ae22823022429a21c3d472f2b8d, type: 3}
+  mailLevel: 1
+  onTake: 0
+--- !u!58 &1242590395534384037
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5692222596091880270}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.1, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.7
+--- !u!50 &6223082624449249121
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5692222596091880270}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

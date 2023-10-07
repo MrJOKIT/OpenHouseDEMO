@@ -12,7 +12,7 @@ public class AsyncLoader  : MonoBehaviour
     [SerializeField] private GameObject mainMenu;
 
     [Header("Slider")] [SerializeField] private Slider loadingSlider;
-
+    
     public void LoadLevelBtn(string levelToLoad)
     {
         Time.timeScale = 1f;
@@ -24,6 +24,7 @@ public class AsyncLoader  : MonoBehaviour
 
     IEnumerator LoadLevelAsync(string levelToLoad)
     {
+        yield return new WaitForSeconds(2.5f);
         AsyncOperation loadOperation = SceneManager.LoadSceneAsync(levelToLoad);
 
         while (!loadOperation.isDone)
@@ -32,6 +33,8 @@ public class AsyncLoader  : MonoBehaviour
             loadingSlider.value = progressValue;
             yield return null;
         }
+
+        
     }
 
     public void CloseGame()

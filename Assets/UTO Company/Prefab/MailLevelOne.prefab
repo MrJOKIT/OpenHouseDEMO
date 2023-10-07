@@ -121,6 +121,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcc10bad4d9779a41ad5a3a6d96b93f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioClip:
+  - {fileID: 8300000, guid: 4ea44ec1f3055e743ba523d35bee7b41, type: 3}
+  - {fileID: 8300000, guid: 5cd9d30594074c346817edab456baeba, type: 3}
+  - {fileID: 8300000, guid: 861c5dd673e7d49479032fd85b5a888f, type: 3}
+  - {fileID: 8300000, guid: 133c5ae22823022429a21c3d472f2b8d, type: 3}
   mailLevel: 0
   onTake: 0
 --- !u!58 &5244479402138697897

@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
 
     [Header("HP Setting")] 
+    public AudioClip hitSound;
+    [SerializeField] private float decreaseHpSpeed = 0.025f;
     [SerializeField] private Slider hpSlider;
     [SerializeField] private Image sliderImage;
     [SerializeField] private Material ultimateMat;
@@ -49,16 +51,19 @@ public class PlayerController : MonoBehaviour
     private float onPowerTimeCounter;
     [SerializeField] private int maxCollectGem;
     public int currentGem;
-    private bool onPower;
+    public bool onPower;
     [Header("Point Taker Setting")] 
     [SerializeField] private float takerRadius;
     [SerializeField] private LayerMask pointLayer;
+    [SerializeField] private LayerMask lifeGemLayer;
+    [SerializeField] private LayerMask ultiGemLayer;
     
     
     [Header("Ref")] 
     private Animator animator;
     private StageSlide stageSlide;
     private GameController _gameController;
+    private BossHunter _bossHunter;
 
     private void Awake()
     {
@@ -68,24 +73,30 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         stageSlide = GameObject.FindGameObjectWithTag("StageSlide").GetComponent<StageSlide>();
         _gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+        _bossHunter = GameObject.FindGameObjectWithTag("Boss").GetComponent<BossHunter>();
     }
 
     private void Update()
     {
-        PointTaker();
-        PlayerJump();
-        CheckRunPosition();
-        UltimatePowerCheck();
+        
         if (stageSlide.start && hpCounter)
         {
             HpTimer();
+        }
+
+        if (!_gameController.gameOver)
+        {
+            PointTaker();
+            PlayerJump();
+            CheckRunPosition();
+            UltimatePowerCheck();
         }
         
     }
 
     private void HpTimer()
     {
-        hpSlider.value -= Time.deltaTime * 0.025f;
+        hpSlider.value -= Time.deltaTime * decreaseHpSpeed;
         if (hpSlider.value <= 0)
         {
             _gameController.GameOver();
@@ -94,6 +105,7 @@ public class PlayerController : MonoBehaviour
 
     public void IncreaseHp(float hpCount)
     {
+        //decreaseHpSpeed *= 1.25f;
         hpSlider.value += hpCount;
     }
 
@@ -127,9 +139,12 @@ public class PlayerController : MonoBehaviour
 
     public void PlayerHit(Transform damageTrans,float damage)
     {
+        SoundEffectPlayer.instance.PlayerAudio(hitSound);
+        animator.SetTrigger("Hurt");
         timeToBackCounter = 0f;
         DecreaseHp(damage);
         rb.AddForce(Vector3.left * 500f);
+        
         Debug.Log("On Hit");
     }
 
@@ -176,6 +191,10 @@ public class PlayerController : MonoBehaviour
 
     private void StartUltimatePower()
     {
+        //transform.gameObject.tag = "Boss";
+        takerRadius = 10;
+        _bossHunter.PlayerOnPower();
+        stageSlide.SlideSpeed = 20;
         sliderImage.color = Color.gray;
         sliderImage.material = ultimateMat;
         hpCounter = false;
@@ -183,6 +202,9 @@ public class PlayerController : MonoBehaviour
 
     private void CancelUltimatePower()
     {
+        //transform.gameObject.tag = "Player";
+        takerRadius = 1;
+        stageSlide.SlideSpeed = 5;
         for (int i = 0; i < boneUIImage.Count; i++)
         {
             boneUIImage[i].gameObject.SetActive(false);
@@ -240,6 +262,20 @@ public class PlayerController : MonoBehaviour
         foreach (Collider2D mail in point)
         {
             mail.GetComponent<MailPoint>().onTake = true;
+        }
+
+        Collider2D[] ultiGem = Physics2D.OverlapCircleAll(transform.position, takerRadius, ultiGemLayer);
+        
+        foreach (var ulti in ultiGem)
+        {
+            ulti.GetComponent<BoneGem>().onTake = true;
+        }
+
+        Collider2D[] lifeGem = Physics2D.OverlapCircleAll(transform.position, takerRadius, lifeGemLayer);
+        
+        foreach (var life in lifeGem)
+        {
+            life.GetComponent<LifeGem>().onTake = true;
         }
     }
 
