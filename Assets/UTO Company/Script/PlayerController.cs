@@ -13,6 +13,9 @@ public class PlayerController : MonoBehaviour
 
     [Header("HP Setting")] 
     [SerializeField] private Slider hpSlider;
+    [SerializeField] private Image sliderImage;
+    [SerializeField] private Material ultimateMat;
+    private bool hpCounter = true;
     
 
     [Header("Jump Setting")]
@@ -34,19 +37,19 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float timeToBackPos;
     private float timeToBackCounter;
 
-    [Header("Dead Setting")] 
+    [Header("Dead Setting")]
     //[SerializeField] private bool canDead;
     //[SerializeField] private float canHitTime;
     //private bool canHit = true;
     //private float canHitTimeCounter;
 
-    [Header("Power setting")] 
+    [Header("Power setting")]
+    public List<Image> boneUIImage;
     [SerializeField] private float onPowerTime;
     private float onPowerTimeCounter;
     [SerializeField] private int maxCollectGem;
     public int currentGem;
     private bool onPower;
-
     [Header("Point Taker Setting")] 
     [SerializeField] private float takerRadius;
     [SerializeField] private LayerMask pointLayer;
@@ -73,7 +76,7 @@ public class PlayerController : MonoBehaviour
         PlayerJump();
         CheckRunPosition();
         UltimatePowerCheck();
-        if (stageSlide.start)
+        if (stageSlide.start && hpCounter)
         {
             HpTimer();
         }
@@ -132,8 +135,25 @@ public class PlayerController : MonoBehaviour
 
     private void UltimatePowerCheck()
     {
-        if (currentGem >= maxCollectGem)
+        if (currentGem == 1)
         {
+            boneUIImage[0].gameObject.SetActive(true);
+        }
+        else if (currentGem == 2)
+        {
+            boneUIImage[1].gameObject.SetActive(true);
+        }
+        else if (currentGem == 3)
+        {
+            boneUIImage[2].gameObject.SetActive(true);
+        }
+        else if (currentGem == 4)
+        {
+            boneUIImage[3].gameObject.SetActive(true);
+        }
+        else if (currentGem >= maxCollectGem)
+        {
+            boneUIImage[4].gameObject.SetActive(true);
             onPower = true;
         }
         if (onPower)
@@ -149,13 +169,28 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void GetUltimatePoint()
+    {
+        currentGem += 1;
+    }
+
     private void StartUltimatePower()
     {
-        
+        sliderImage.color = Color.gray;
+        sliderImage.material = ultimateMat;
+        hpCounter = false;
     }
 
     private void CancelUltimatePower()
     {
+        for (int i = 0; i < boneUIImage.Count; i++)
+        {
+            boneUIImage[i].gameObject.SetActive(false);
+        }
+
+        sliderImage.color = Color.cyan;
+        sliderImage.material = null;
+        hpCounter = true;
         currentGem = 0;
     }
 

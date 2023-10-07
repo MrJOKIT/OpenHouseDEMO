@@ -11,6 +11,7 @@ public class GameController : MonoBehaviour
 {
     [SerializeField] private GameObject playerCanvas;
     [SerializeField] private GameObject gameOverCanvas;
+    private bool gameOver = false;
 
     [Header("Player Score")]
     public List<GameObject> iconScores;
@@ -75,7 +76,12 @@ public class GameController : MonoBehaviour
         playerCanvas.SetActive(false);
         gameOverCanvas.SetActive(true);
         _stageSlide.SlideSpeed = 0f;
-        gameOverText.SetText("<pend>SORRY MOM");
+        if (!gameOver)
+        {
+            gameOverText.SetText("<shake a=0.5>GAME OVER");
+            gameOver = true;
+        }
+        
         //Time.timeScale = 0f;
     }
 }
