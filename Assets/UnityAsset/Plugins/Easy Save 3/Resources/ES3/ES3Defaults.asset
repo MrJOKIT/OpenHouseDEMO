@@ -31,10 +31,13 @@ MonoBehaviour:
     serializationDepthLimit: 64
     assemblyNames:
     - Assembly-CSharp
+    - Assembly-CSharp-firstpass
     - Febucci.Attributes.Runtime
     - Febucci.TextAnimator.Demo.Runtime
     - Febucci.TextAnimator.Runtime
     - Febucci.TextAnimator.TMP.Runtime
+    - NativeGallery.Runtime
+    - NativeShare.Runtime
     - ProCamera2D.Examples
     - ProCamera2D.Runtime
     - SingularityGroup.HotReload.Runtime

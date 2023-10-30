@@ -8,6 +8,7 @@ using UnityEngine;
 
 public class ScoreResult : MonoBehaviour
 {
+    private MenuManager _manager;
     private GameController _gameController;
     public TextMeshProUGUI scoreResult;
     private float resultScore;
@@ -15,6 +16,7 @@ public class ScoreResult : MonoBehaviour
     private void OnEnable()
     {
         _gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+        _manager= GameObject.FindGameObjectWithTag("GameController").GetComponent<MenuManager>();
         
     }
 
@@ -53,14 +55,13 @@ public class ScoreResult : MonoBehaviour
 
     private void CalculateResult()
     {
-        if (resultScore <= _gameController.playerScore)
+        if (resultScore <= _gameController.playerScore && !_manager.menuActive)
         {
             resultScore += Time.deltaTime * _gameController.playerScore / 1.15f;
         }
 
         int finalScore = Convert.ToInt32(resultScore);
         scoreResult.text = finalScore.ToString();
-
     }
     
 }

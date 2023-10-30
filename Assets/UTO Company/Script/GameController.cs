@@ -11,6 +11,7 @@ public class GameController : MonoBehaviour
 {
     [SerializeField] private GameObject playerCanvas;
     [SerializeField] private GameObject gameOverCanvas;
+    [SerializeField] private GameObject playAgainCanvas;
     public AudioClip gameOverClip;
     public bool gameOver = false;
 
@@ -22,12 +23,16 @@ public class GameController : MonoBehaviour
     public Transform mailInventory;
 
     private StageSlide _stageSlide;
+    private MenuManager _manager;
+    private PlayerController _playerController;
 
 
     private void Start()
     {
         Cursor.visible = false;
         _stageSlide = GameObject.FindGameObjectWithTag("StageSlide").GetComponent<StageSlide>();
+        _playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        _manager = GetComponent<MenuManager>();
         //scoreText.SetText("<bounce a=0.1 f=2 w=0.5>"+ playerScore);
     }
 
@@ -35,11 +40,29 @@ public class GameController : MonoBehaviour
     { 
         ChangeIcon();
         //float playerScoreCal = 10 * Time.deltaTime;
-        if (!gameOver && _stageSlide.start)
+        if (!gameOver && _stageSlide.start && !_manager.menuActive)
         {
             playerScore += 1;
         }
         scoreText.SetText($"<bounce a=0.1 f=2 w=0.5>{playerScore}" );
+    }
+
+    public void PlayAgain()
+    {
+        gameOver = false;
+        gameOverCanvas.SetActive(false);
+        playAgainCanvas.SetActive(false);
+        Cursor.visible = false;
+        playerCanvas.SetActive(true);
+        _stageSlide.SlideSpeed = 5f;
+    }
+
+    public void AdsToContinue()
+    {
+        _playerController.ResetPosition();
+        _playerController.IncreaseHp(0.5f);
+        gameOverCanvas.SetActive(false);
+        playAgainCanvas.SetActive(true);
     }
     
     private void ChangeIcon()

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
@@ -64,6 +65,7 @@ public class PlayerController : MonoBehaviour
     private StageSlide stageSlide;
     private GameController _gameController;
     private BossHunter _bossHunter;
+    
 
     private void Awake()
     {
@@ -253,6 +255,11 @@ public class PlayerController : MonoBehaviour
             }
         }
         
+    }
+
+    public void ResetPosition()
+    {
+        transform.position = runPos.position;
     }
 
     private void PointTaker()

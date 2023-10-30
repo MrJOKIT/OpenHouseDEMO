@@ -18,6 +18,8 @@ public class LifeGem : MonoBehaviour
 
     private void Update()
     {
+
+        
         if (onTake)
         {
             transform.position = Vector3.Lerp(transform.position,_playerController.transform.position, 100 * Time.deltaTime);
