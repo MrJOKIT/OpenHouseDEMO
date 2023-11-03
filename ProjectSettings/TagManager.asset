@@ -11,6 +11,7 @@ TagManager:
   - Damage
   - BackChecker
   - MailInventory
+  - SpawnControl
   layers:
   - Default
   - TransparentFX

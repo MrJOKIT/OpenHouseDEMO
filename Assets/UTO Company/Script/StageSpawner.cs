@@ -14,7 +14,7 @@ public class StageSpawner : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.CompareTag("Player") )
+        if (col.CompareTag("SpawnControl") )
         {
             Instantiate(stageManager.stagePrefab[Random.Range(0,stageManager.stagePrefab.Count)],transform.position,Quaternion.identity);
             Destroy(gameObject);

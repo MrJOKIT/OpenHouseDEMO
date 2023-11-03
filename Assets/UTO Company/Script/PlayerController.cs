@@ -155,21 +155,41 @@ public class PlayerController : MonoBehaviour
         if (currentGem == 1)
         {
             boneUIImage[0].gameObject.SetActive(true);
+            boneUIImage[1].gameObject.SetActive(false);
+            boneUIImage[2].gameObject.SetActive(false);
+            boneUIImage[3].gameObject.SetActive(false);
+            boneUIImage[4].gameObject.SetActive(false);
         }
         else if (currentGem == 2)
         {
+            boneUIImage[0].gameObject.SetActive(true);
             boneUIImage[1].gameObject.SetActive(true);
+            boneUIImage[2].gameObject.SetActive(false);
+            boneUIImage[3].gameObject.SetActive(false);
+            boneUIImage[4].gameObject.SetActive(false);
         }
         else if (currentGem == 3)
         {
+            boneUIImage[0].gameObject.SetActive(true);
+            boneUIImage[1].gameObject.SetActive(true);
             boneUIImage[2].gameObject.SetActive(true);
+            boneUIImage[3].gameObject.SetActive(false);
+            boneUIImage[4].gameObject.SetActive(false);
         }
         else if (currentGem == 4)
         {
+            boneUIImage[0].gameObject.SetActive(true);
+            boneUIImage[1].gameObject.SetActive(true);
+            boneUIImage[2].gameObject.SetActive(true);
             boneUIImage[3].gameObject.SetActive(true);
+            boneUIImage[4].gameObject.SetActive(false);
         }
         else if (currentGem >= maxCollectGem)
         {
+            boneUIImage[0].gameObject.SetActive(true);
+            boneUIImage[1].gameObject.SetActive(true);
+            boneUIImage[2].gameObject.SetActive(true);
+            boneUIImage[3].gameObject.SetActive(true);
             boneUIImage[4].gameObject.SetActive(true);
             onPower = true;
         }

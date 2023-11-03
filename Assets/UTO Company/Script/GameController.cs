@@ -14,6 +14,8 @@ public class GameController : MonoBehaviour
     [SerializeField] private GameObject playAgainCanvas;
     public AudioClip gameOverClip;
     public bool gameOver = false;
+    private bool adsActive;
+    [SerializeField] private GameObject adsButton;
 
     [Header("Player Score")]
     public List<GameObject> iconScores;
@@ -45,6 +47,11 @@ public class GameController : MonoBehaviour
             playerScore += 1;
         }
         scoreText.SetText($"<bounce a=0.1 f=2 w=0.5>{playerScore}" );
+
+        if (adsActive)
+        {
+            adsButton.SetActive(false);
+        }
     }
 
     public void PlayAgain()
@@ -53,6 +60,7 @@ public class GameController : MonoBehaviour
         gameOverCanvas.SetActive(false);
         playAgainCanvas.SetActive(false);
         Cursor.visible = false;
+        
         playerCanvas.SetActive(true);
         _stageSlide.SlideSpeed = 5f;
     }
@@ -62,6 +70,7 @@ public class GameController : MonoBehaviour
         _playerController.ResetPosition();
         _playerController.IncreaseHp(0.5f);
         gameOverCanvas.SetActive(false);
+        adsActive = true;
         playAgainCanvas.SetActive(true);
     }
     
