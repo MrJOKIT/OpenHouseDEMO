@@ -13,4 +13,11 @@ public class ReadMe : MonoBehaviour
         yield return null;
     }*/
     
+    //โปรเจคนี้จัดทำด้วยผม ณัฐกิตติ์ นามวงค์
+    //รังสรรค์ภาพโดย ภูวนัตถ์ ฟ้ารุ่งสาง
+    //และขอบคุณ Asset มากมาย
+    //Easy Save,Text Animator,Lock Adventure,HF Font
+    //และ ขอบคุณอาจารย์ผู้สอน Pongsathorn Kiatticharoenporn 
+    //ที่สอนผมต่างๆมากมาย ตั้งแต่คอร์สใน BornToDev จนถึง ชั้นเรียนมหาวิทยาลัยกรุงเทพ
+
 }

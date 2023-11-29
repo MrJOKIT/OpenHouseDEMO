@@ -2267,7 +2267,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1008588472983042207, guid: bbc65a79040ccdf43aafd39bbe7495f3, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1008588473036166969, guid: bbc65a79040ccdf43aafd39bbe7495f3, type: 3}
       propertyPath: m_AnchorMax.y
@@ -4054,7 +4054,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &839106966
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8321,8 +8321,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1706211380}
-        m_TargetAssemblyTypeName: ScreenShotManager, Assembly-CSharp-firstpass
-        m_MethodName: ShareImage
+        m_TargetAssemblyTypeName: ScreenShotManager, Assembly-CSharp
+        m_MethodName: SaveToGallery
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10355,7 +10355,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1840364448
 MonoBehaviour:
   m_ObjectHideFlags: 0

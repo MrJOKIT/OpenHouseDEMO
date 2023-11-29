@@ -41,7 +41,10 @@ public class HighScore : MonoBehaviour
                 canInsert = false;
                 break;
             }
-            
+            else
+            {
+                canInsert = true;
+            }
         }
 
         if (canInsert)
