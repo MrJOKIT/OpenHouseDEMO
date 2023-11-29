@@ -12,6 +12,7 @@ TagManager:
   - BackChecker
   - MailInventory
   - SpawnControl
+  - HighScore
   layers:
   - Default
   - TransparentFX

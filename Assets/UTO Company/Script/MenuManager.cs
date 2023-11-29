@@ -11,6 +11,7 @@ public class MenuManager : MonoBehaviour
     private GameController _gameController;
     [Header("Menu")] 
     public GameObject menuCanvas;
+    public GameObject menuPanel;
     public GameObject playerCanvas;
     public GameObject capturePanel;
     public GameObject screenShotPanel;
@@ -43,12 +44,14 @@ public class MenuManager : MonoBehaviour
         if (_playerInput.actions["Esc"].triggered && menuActive)
         {
             playerCanvas.SetActive(true);
+            menuPanel.SetActive(true);
             menuCanvas.SetActive(false);
             capturePanel.SetActive(false);
             screenShotPanel.SetActive(false);
             menuActive = false;
             Time.timeScale = 1f;
-            
+            Cursor.visible = false;
+
         }
         else if (_playerInput.actions["Esc"].triggered && !menuActive)
         {
@@ -58,6 +61,7 @@ public class MenuManager : MonoBehaviour
             screenShotPanel.SetActive(false);
             menuActive = true;
             Time.timeScale = 0f;
+            Cursor.visible = true;
         }
     }
     
@@ -70,6 +74,7 @@ public class MenuManager : MonoBehaviour
          screenShotPanel.SetActive(false);
          menuActive = true;
          Time.timeScale = 0f;
+         //Cursor.visible = true;
 
 
      }
@@ -83,5 +88,6 @@ public class MenuManager : MonoBehaviour
         screenShotPanel.SetActive(false);
         menuActive = false;
         Time.timeScale = 1f;
+        //Cursor.visible = false;
     }
 }

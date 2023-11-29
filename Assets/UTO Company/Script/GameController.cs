@@ -12,7 +12,6 @@ public class GameController : MonoBehaviour
     [SerializeField] private GameObject playerCanvas;
     [SerializeField] private GameObject gameOverCanvas;
     [SerializeField] private GameObject playAgainCanvas;
-    public AudioClip gameOverClip;
     public bool gameOver = false;
     private bool adsActive;
     [SerializeField] private GameObject adsButton;
@@ -21,8 +20,10 @@ public class GameController : MonoBehaviour
     public List<GameObject> iconScores;
     public TextAnimator_TMP scoreText;
     public TextAnimator_TMP gameOverText;
+    public TextAnimator_TMP saveNotificationText;
     public int playerScore = 0;
     public Transform mailInventory;
+    public string playerName;
 
     private StageSlide _stageSlide;
     private MenuManager _manager;
@@ -45,8 +46,9 @@ public class GameController : MonoBehaviour
         if (!gameOver && _stageSlide.start && !_manager.menuActive)
         {
             playerScore += 1;
+            scoreText.SetText($"<bounce a=0.1 f=2 w=0.5>{playerScore}" );
         }
-        scoreText.SetText($"<bounce a=0.1 f=2 w=0.5>{playerScore}" );
+        
 
         if (adsActive)
         {
@@ -120,4 +122,32 @@ public class GameController : MonoBehaviour
         
         //Time.timeScale = 0f;
     }
+    
+    public void InputPlayerName(string n)
+    {
+        playerName = n;
+    }
+
+    public void SaveNameHighScore()
+    {
+        if (playerName != null)
+        {
+            HighScore.instance.SaveHighScore(playerName,playerScore);
+        }
+        else
+        {
+            HighScore.instance.SaveHighScore("Unknow",playerScore);
+        }
+    }
+
+    public void SaveNotification()
+    {
+        saveNotificationText.SetText("SAVE!!");
+    }
+
+    public void CloseNotification()
+    {
+        saveNotificationText.SetText("{#fade}");
+    }
+    
 }

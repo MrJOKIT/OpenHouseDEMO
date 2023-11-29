@@ -160,5 +160,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioClip:
   - {fileID: 8300000, guid: 62e2bbb506f359048a8863b5ed140634, type: 3}
-  hpIncreasePoint: 0.2
+  hpIncreasePoint: 0.125
   onTake: 0

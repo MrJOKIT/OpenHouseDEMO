@@ -108,7 +108,10 @@ public class PlayerController : MonoBehaviour
     public void IncreaseHp(float hpCount)
     {
         //decreaseHpSpeed *= 1.25f;
-        hpSlider.value += hpCount;
+        if (!onPower)
+        {
+            hpSlider.value += hpCount;
+        }
     }
 
     private void DecreaseHp(float hpCount)

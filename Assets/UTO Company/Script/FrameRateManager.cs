@@ -11,6 +11,7 @@ public class FrameRateManager : MonoBehaviour
     int MaxRate = 9999;
     public float TargetFrameRate = 60.0f;
     float currentFrameTime;
+    public bool showFps;
     
     [SerializeField] private TextMeshProUGUI fpsText;
     private float fpsCount;
@@ -23,7 +24,7 @@ public class FrameRateManager : MonoBehaviour
     }
     private void Update()
     {
-        if (fpsText != null)
+        if (fpsText != null && showFps)
         {
             fpsCount = 1f / Time.deltaTime;
             fpsText.text = "FPS: " + Convert.ToInt32(fpsCount);

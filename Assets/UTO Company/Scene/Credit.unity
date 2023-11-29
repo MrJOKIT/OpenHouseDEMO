@@ -421,6 +421,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LoadingScene
       objectReference: {fileID: 0}
+    - target: {fileID: 1008588472983042207, guid: bbc65a79040ccdf43aafd39bbe7495f3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bbc65a79040ccdf43aafd39bbe7495f3, type: 3}
 --- !u!1 &451761023 stripped
@@ -704,13 +708,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Developer Team\n----------------------------------------------------------\n\nProgramming\n\nNattakit
-    Namwong 1640700025\n\n-----------------------------------------------------------\n\n2D
-    Artist\n\nPuwanat Farungsang 1640700033\n\n-------------------------------------------------------------\n\nAsset\n\nProCamera2D\n\nEASY
-    SAVE\n\nFont HF GOLD\n\nThis material is Copyright \xA92022 to Joshua \"JDSherbert\"
-    Herbert.\r\nDo not copy, edit, or redistribute this material without the artist's
-    prior consent.\r\nBy purchasing this product, you agree to the terms in this
-    licence.\r\nAll rights reserved."
+  m_text: "Developer Team\n----------------------------------------------------------\nProgramming\nNattakit
+    Namwong 1640700025\nThanat Luengon 1640700355\n-----------------------------------------------------------\n2D
+    Artist / UI / UX\nPuwanat Farungsang 1640700033\nAtip Pongphimine 1640700215\n-------------------------------------------------------------\n\nAsset\n\nProCamera2D\n\nEASY
+    SAVE\n\nFont HF GOLD\n\nText Animator by febucci\n\nThis material is Copyright
+    \xA92022 to Joshua \"JDSherbert\" Herbert.\r\nDo not copy, edit, or redistribute
+    this material without the artist's prior consent.\r\nBy purchasing this product,
+    you agree to the terms in this licence.\r\nAll rights reserved."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 957c6011c62dd154e96e1a9af3b20500, type: 2}
   m_sharedMaterial: {fileID: -263413220347628467, guid: 957c6011c62dd154e96e1a9af3b20500, type: 2}
